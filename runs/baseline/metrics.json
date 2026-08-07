@@ -1,0 +1,121 @@
+{
+  "label": "baseline",
+  "overrides": {},
+  "retrieval": {
+    "recall_at_k": {
+      "1": 0.7093,
+      "3": 0.8333,
+      "5": 0.8798,
+      "10": 0.9031,
+      "20": 0.9384
+    },
+    "hit_rate_at_k": {
+      "1": 0.7907,
+      "3": 0.8837,
+      "5": 0.9302,
+      "10": 0.9302,
+      "20": 0.9767
+    },
+    "precision_at_k": {
+      "1": 0.7907,
+      "3": 0.3256,
+      "5": 0.2186,
+      "10": 0.114,
+      "20": 0.064
+    },
+    "mrr": 0.8445,
+    "ndcg_at_10": 0.8455,
+    "n_evaluated": 43,
+    "n_skipped_unanswerable": 14
+  },
+  "generation": {
+    "faithfulness": 0.809,
+    "answer_relevance": 0.365,
+    "context_precision": 0.3744,
+    "abstention_accuracy": 0.7544,
+    "hallucination_rate": 0.2931,
+    "n_evaluated": 57,
+    "n_judge_errors": 20
+  },
+  "latency": {
+    "embed_query": {
+      "n": 57.0,
+      "mean_ms": 168.77,
+      "p50_ms": 40.98,
+      "p95_ms": 298.77
+    },
+    "dense_search": {
+      "n": 57.0,
+      "mean_ms": 0.4,
+      "p50_ms": 0.27,
+      "p95_ms": 1.07
+    },
+    "bm25_search": {
+      "n": 57.0,
+      "mean_ms": 2.91,
+      "p50_ms": 0.9,
+      "p95_ms": 3.65
+    },
+    "fusion": {
+      "n": 57.0,
+      "mean_ms": 0.54,
+      "p50_ms": 0.32,
+      "p95_ms": 0.68
+    },
+    "rerank": {
+      "n": 57.0,
+      "mean_ms": 3496.64,
+      "p50_ms": 3839.5,
+      "p95_ms": 5442.24
+    },
+    "assemble_context": {
+      "n": 57.0,
+      "mean_ms": 0.85,
+      "p50_ms": 0.18,
+      "p95_ms": 1.77
+    },
+    "generate": {
+      "n": 57.0,
+      "mean_ms": 81002.13,
+      "p50_ms": 66985.74,
+      "p95_ms": 167412.61
+    },
+    "TOTAL": {
+      "n": 57.0,
+      "mean_ms": 84672.24,
+      "p50_ms": 71184.72,
+      "p95_ms": 172649.52
+    },
+    "TOTAL_RETRIEVAL": {
+      "n": 57.0,
+      "mean_ms": 3670.1,
+      "p50_ms": 3966.68,
+      "p95_ms": 5502.82
+    }
+  },
+  "by_question_type": {
+    "aggregation": {
+      "n": 5,
+      "recall@10": 0.1667,
+      "hit_rate@10": 0.4,
+      "mrr": 0.146,
+      "ndcg": 0.1108
+    },
+    "factoid": {
+      "n": 30,
+      "recall@10": 1.0,
+      "hit_rate@10": 1.0,
+      "mrr": 0.9444,
+      "ndcg": 0.9587
+    },
+    "multi_hop": {
+      "n": 8,
+      "recall@10": 1.0,
+      "hit_rate@10": 1.0,
+      "mrr": 0.9062,
+      "ndcg": 0.8802
+    }
+  },
+  "n_items": 57,
+  "n_errors": 0
+}

@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  PYTHONUNBUFFERED: "1"
+  TOKENIZERS_PARALLELISM: "false"
+
+jobs:
+  test:
+    name: lint + tests + eval gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install CPU torch
+        # Explicitly, and before everything else, so pip does not resolve the
+        # multi-gigabyte CUDA build as a transitive dependency on a CI runner.
+        run: pip install --index-url https://download.pytorch.org/whl/cpu torch
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          pip install --no-deps -e .
+
+      - name: Lint
+        run: ruff check src tests
+
+      - name: Tests
+        # The hermetic end-to-end test is the real gate here. It builds an index,
+        # runs the full pipeline, computes retrieval metrics and asserts the build
+        # thresholds - with no network, no model download and no LLM. A config,
+        # prompt or fusion change that drops recall fails this job.
+        run: pytest -q
+
+  eval-gate:
+    name: full-corpus eval gate
+    # The real corpus needs a PubMed fetch and an embedding-model download, so it is
+    # too slow and too network-dependent for every push. It runs nightly and on
+    # demand, and it is the check that actually guards the numbers in the README.
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install --index-url https://download.pytorch.org/whl/cpu torch
+      - run: |
+          pip install -r requirements.txt
+          pip install --no-deps -e .
+
+      - name: Cache the corpus and index
+        uses: actions/cache@v4
+        with:
+          path: data
+          key: corpus-${{ hashFiles('configs/default.yaml') }}
+
+      - name: Ingest and index
+        env:
+          RAGMED_NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
+          RAGMED_NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: |
+          test -f data/corpus/documents.jsonl || ragmed ingest
+          test -f data/index/index_meta.json || ragmed index
+
+      - name: Retrieval eval with build gates
+        # Retrieval only: no LLM on the runner, and the retrieval metrics are the
+        # deterministic half anyway. Generation metrics are run locally against
+        # Ollama and reported in the README, not gated here.
+        run: ragmed eval --label ci --gate --plain-logs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-report
+          path: runs/ci/

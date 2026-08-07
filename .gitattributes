@@ -1,0 +1,17 @@
+# Normalise line endings so the repo is identical on Windows, Linux and CI.
+# Without this, files authored on Windows land in the repo with CRLF and every
+# checkout on a Linux CI runner shows the whole file as modified.
+* text=auto eol=lf
+
+# JSONL artifacts are data, not prose - keep them byte-stable.
+*.jsonl text eol=lf
+*.json  text eol=lf
+
+# Windows-only launcher must keep CRLF or cmd.exe can mis-parse it.
+*.cmd text eol=crlf
+
+# Never touch binaries.
+*.npy  binary
+*.npz  binary
+*.png  binary
+*.pdf  binary

@@ -1,0 +1,58 @@
+{
+  "n_items": 57,
+  "n_clean": 53,
+  "n_failures": 4,
+  "counts": {
+    "retrieval": 2,
+    "ranking": 2,
+    "abstention": 0,
+    "generation": 0,
+    "error": 0
+  },
+  "failures": [
+    {
+      "qid": "a-002",
+      "question": "Which different antibiotic strategies have been compared for treating community-acquired pneumonia in hospitalised adults?",
+      "question_type": "aggregation",
+      "category": "ranking",
+      "detail": "gold chunk was retrieved at rank 11 but fell below the context cutoff",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": 11,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "a-003",
+      "question": "What interventions have been shown to slow the progression of chronic kidney disease?",
+      "question_type": "aggregation",
+      "category": "ranking",
+      "detail": "gold chunk was retrieved at rank 18 but fell below the context cutoff",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": 18,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "a-004",
+      "question": "Which heart failure studies are identified by a ClinicalTrials.gov NCT registration number?",
+      "question_type": "aggregation",
+      "category": "retrieval",
+      "detail": "no gold chunk appeared anywhere in the ranked list",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "a-005",
+      "question": "How well are cholesterol and glycaemic treatment targets actually achieved in routine clinical practice?",
+      "question_type": "aggregation",
+      "category": "retrieval",
+      "detail": "partial recall (0.33): some gold chunks were never retrieved",
+      "recall": 0.3333333333333333,
+      "faithfulness": null,
+      "first_hit_rank": 3,
+      "answer_excerpt": null
+    }
+  ]
+}

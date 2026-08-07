@@ -1,0 +1,234 @@
+{
+  "n_items": 57,
+  "n_clean": 31,
+  "n_failures": 20,
+  "counts": {
+    "retrieval": 2,
+    "ranking": 2,
+    "abstention": 14,
+    "generation": 8,
+    "error": 0
+  },
+  "failures": [
+    {
+      "qid": "a-002",
+      "question": "Which different antibiotic strategies have been compared for treating community-acquired pneumonia in hospitalised adults?",
+      "question_type": "aggregation",
+      "category": "ranking",
+      "detail": "gold chunk was retrieved at rank 11 but fell below the context cutoff",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": 11,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "a-003",
+      "question": "What interventions have been shown to slow the progression of chronic kidney disease?",
+      "question_type": "aggregation",
+      "category": "ranking",
+      "detail": "gold chunk was retrieved at rank 18 but fell below the context cutoff",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": 18,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "a-004",
+      "question": "Which heart failure studies are identified by a ClinicalTrials.gov NCT registration number?",
+      "question_type": "aggregation",
+      "category": "retrieval",
+      "detail": "no gold chunk appeared anywhere in the ranked list",
+      "recall": 0.0,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "u-001",
+      "question": "What insulin infusion rate is recommended for treating diabetic ketoacidosis in adults?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "INSUFFICIENT CONTEXT. The sources do not provide information on the recommended insulin infusion rate for treating diabetic ketoacidosis in adults."
+    },
+    {
+      "qid": "u-002",
+      "question": "Which direct oral anticoagulant carries the lowest risk of gastrointestinal bleeding in atrial fibrillation?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "[PMID:39344785 §Introduction / Areas Covered]"
+    },
+    {
+      "qid": "u-003",
+      "question": "What is the target INR range for a patient with a mechanical mitral valve replacement?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "[PMID:16706956 §Conclusion]"
+    },
+    {
+      "qid": "u-004",
+      "question": "How long should dual antiplatelet therapy be continued after placement of a drug-eluting coronary stent?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "INSUFFICIENT CONTEXT. The sources do not provide information on the duration of dual antiplatelet therapy after placement of a drug-eluting coronary stent."
+    },
+    {
+      "qid": "u-005",
+      "question": "What vancomycin dose is recommended for methicillin-resistant Staphylococcus aureus pneumonia?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "[PMID:39917810 §Management]"
+    },
+    {
+      "qid": "u-006",
+      "question": "Which potassium binder is preferred for treating hyperkalaemia caused by ACE inhibitor therapy?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "[@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-007",
+      "question": "At what estimated GFR should metformin be discontinued in patients with type 2 diabetes?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-008",
+      "question": "At what estimated GFR should maintenance dialysis be initiated in chronic kidney disease?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-009",
+      "question": "Which pneumococcal vaccine schedule is recommended for adults over 65 to prevent pneumonia?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-010",
+      "question": "What is the five-year survival rate after heart transplantation for end-stage heart failure?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-011",
+      "question": "How many grams per day of dietary sodium restriction are recommended in chronic heart failure?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-012",
+      "question": "Which SGLT2 inhibitor is preferred for patients with type 1 diabetes?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-013",
+      "question": "What is the sensitivity of procalcitonin for distinguishing bacterial from viral pneumonia?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "u-014",
+      "question": "What is the recommended duration of anticoagulation after a first unprovoked pulmonary embolism?",
+      "question_type": "unanswerable",
+      "category": "abstention",
+      "detail": "answered a question the corpus cannot support (hallucination risk)",
+      "recall": null,
+      "faithfulness": null,
+      "first_hit_rank": null,
+      "answer_excerpt": "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    },
+    {
+      "qid": "a-005",
+      "question": "How well are cholesterol and glycaemic treatment targets actually achieved in routine clinical practice?",
+      "question_type": "aggregation",
+      "category": "retrieval",
+      "detail": "partial recall (0.33): some gold chunks were never retrieved",
+      "recall": 0.3333333333333333,
+      "faithfulness": null,
+      "first_hit_rank": 3,
+      "answer_excerpt": null
+    },
+    {
+      "qid": "f-001",
+      "question": "By what percentage did empagliflozin reduce clinical events of hyperuricaemia such as acute gout in patients with heart failure and preserved ejection fraction?",
+      "question_type": "factoid",
+      "category": "generation",
+      "detail": "1/1 claims unsupported despite correct context",
+      "recall": 1.0,
+      "faithfulness": 0.0,
+      "first_hit_rank": null,
+      "answer_excerpt": "[PMID:39453357 §Results] Empagliflozin reduced clinical events of hyperuricemia (acute gout, gouty arthritis, or initiation of antigout therapy) by 38% (HR: 0.62 [95% CI: 0.51-0.76]; P < 0.0001)."
+    },
+    {
+      "qid": "f-026",
+      "question": "What effect did beta-blocker therapy have on all-cause mortality in preserved ejection fraction heart failure in pooled observational cohort studies?",
+      "question_type": "factoid",
+      "category": "generation",
+      "detail": "1/1 claims unsupported despite correct context",
+      "recall": 1.0,
+      "faithfulness": 0.0,
+      "first_hit_rank": null,
+      "answer_excerpt": "[PMID:38184132 §Results / Findings] \nBeta-blocker therapy was associated with a significant reduction in all-cause mortality by 19 % (odds ratio (OR) 0.81; 95 % confidence interval (CI): 0.65-0.99, p = 0.044)."
+    }
+  ]
+}

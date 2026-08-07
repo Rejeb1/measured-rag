@@ -1,0 +1,38 @@
+# --- committed on purpose -----------------------------------------------------
+#
+# data/corpus/documents.jsonl  The fetched corpus IS committed, even though `ragmed
+#   ingest` can rebuild it. PubMed is a moving target: re-running ingestion months
+#   later returns a different set of papers, which changes the chunk ids, which
+#   silently invalidates every gold label in the golden set. Committing the corpus is
+#   what makes the evaluation reproducible by anyone who clones this.
+#
+# data/golden/  The golden set - the contract every eval number is measured against.
+#
+# runs/  The measured results behind the README's tables. Small, and they are the
+#   evidence for the claims.
+
+# --- not committed ------------------------------------------------------------
+# Indexes are deterministic given the corpus + config fingerprint, so rebuilding
+# them is exact rather than approximate. `ragmed index` regenerates in ~1 minute.
+data/index/
+data/cache/
+data/raw/
+*.npy
+*.npz
+*.faiss
+
+# Raw console dumps: tqdm progress bars and ANSI noise, superseded by the JSON
+# artifacts in runs/<label>/ that carry the same numbers in a readable form.
+runs/*.txt
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.DS_Store

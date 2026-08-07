@@ -1,0 +1,56 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1 || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    # Uncomment if you have a working nvidia container runtime. Note the 4GB card in
+    # the README notes: an 8B model at q4 fits, larger ones will not.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # One-shot: pulls the generation/judge model, then exits. Without this the API
+  # comes up healthy but every /ask returns 503.
+  model-pull:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["sh", "-c", "ollama pull ${RAGMED_GEN_MODEL:-llama3.1:8b}"]
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: "no"
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      RAGMED_OLLAMA_HOST: http://ollama:11434
+      RAGMED_GEN_MODEL: ${RAGMED_GEN_MODEL:-llama3.1:8b}
+      RAGMED_JUDGE_MODEL: ${RAGMED_JUDGE_MODEL:-llama3.1:8b}
+      RAGMED_LOG_LEVEL: INFO
+    volumes:
+      # The index must exist on the host first: `ragmed ingest && ragmed index`.
+      - ./data:/app/data
+      - ./runs:/app/runs
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+volumes:
+  ollama-models:
