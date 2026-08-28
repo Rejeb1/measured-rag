@@ -16,3 +16,7 @@ tqdm>=4.66
 pytest>=8.0
 pytest-asyncio>=0.23
 ruff>=0.4
+
+# Docs: scripts/make_overview_pdf.py renders the project overview, reading its
+# figures live from runs/ so the PDF cannot drift from what was measured.
+reportlab>=4.0
